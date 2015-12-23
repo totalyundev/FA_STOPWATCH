@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "wojtekpoltorak@gmail.com",
+    "longName": "FA_STOPWATCH",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "FA_STOPWATCH",
+    "uuid": "59712398-2c20-4083-9701-db7bfeb6d2ad",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
