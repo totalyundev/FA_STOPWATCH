@@ -7,7 +7,47 @@
     "longName": "FA_STOPWATCH",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "images/music_icon_pause.png",
+                "name": "PAUSE_ICON",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/music_icon_play.png",
+                "name": "PLAY_ICON",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/clock224.png",
+                "name": "CLOCK_IMG",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "characterRegex": "[0-9:]",
+                "file": "fonts/small_pixel-7.ttf",
+                "name": "DISPLAY_35",
+                "targetPlatforms": null,
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9:]",
+                "file": "fonts/Even Stevens.ttf",
+                "name": "STOPWATCH_FONT_42",
+                "targetPlatforms": null,
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9:]",
+                "file": "fonts/Even Stevens.ttf",
+                "name": "STOPWATCH_FONT_28",
+                "targetPlatforms": null,
+                "type": "font"
+            }
+        ]
     },
     "sdkVersion": "3",
     "shortName": "FA_STOPWATCH",

@@ -1,14 +1,22 @@
 #include <pebble.h>
 #include "first_menu.h"
+#include "stopwatch.h"
+#include "skaryfikacja.h"
 
 #define NUM_MENU_ICONS 4
-#define NUM_MENU_SECTIONS 3
+#define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 4
 #define NUM_SECOND_MENU_ITEMS 4
 #define NUM_THIRD_MENU_ITEMS 4
 static Window *window;
 static MenuLayer *menu_layer;
 static GBitmap *menu_icons[NUM_MENU_ICONS];
+
+static void display_stopwatch(void) {
+	APP_LOG(APP_LOG_LEVEL_DEBUG, "clicked menu element");
+//show_skaryfikacja();
+		show_stopwatch();
+}
 
 static uint16_t menu_get_num_sections_callback(MenuLayer *menu_layer, void *data) {
 return NUM_MENU_SECTIONS;
@@ -103,14 +111,72 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
 }
 
 void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *data) {// Use the row to specify which item will receive the select action
-switch (cell_index->row) {
-// This is the menu item with the cycling icon
+switch (cell_index->section) {
+     /*   case 0:
+        // Use the row to specify which item we'll draw
+        switch (cell_index->row) {
+            case 0:
+//            menu_cell_basic_draw(ctx, cell_layer, "Event #1", NULL,NULL);
+            break;
+            case 1:
+  //          menu_cell_basic_draw(ctx, cell_layer, "Event #2", NULL, NULL);
+								
+
+            break;
+            case 2:
+    //        menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
+            break;
+            case 3:
+      //      menu_cell_basic_draw(ctx, cell_layer, "Event #4", NULL, NULL);
+            break;
+        }
+        break;
+        case 1:
+        switch (cell_index->row) {
+            case 0:
+        //    menu_cell_basic_draw(ctx, cell_layer, "Event #1", NULL,NULL);
+            break;
+            case 1:
+          //  menu_cell_basic_draw(ctx, cell_layer, "Event #2", NULL, NULL);
+            break;
+            case 2:
+            //menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
+            break;
+            case 3:
+     //       menu_cell_basic_draw(ctx, cell_layer, "Event #4", NULL, NULL);
+            break;
+        }
+        break;
+        case 2:
+        switch (cell_index->row) {
+						case 0:
+       //     menu_cell_basic_draw(ctx, cell_layer, "Event #1", NULL,NULL);
+            break;
+            case 1:
+         //   menu_cell_basic_draw(ctx, cell_layer, "Event #2", NULL, NULL);
+            break;
+            case 2:
+           // menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
+            break;
+            case 3:
+           // menu_cell_basic_draw(ctx, cell_layer, "Event #4", NULL, NULL);
+            break;
+        }
+        break;
+    }*/
+	/*switch (cell_index->row) {
+
 case 1:
 // Cycle the icon
 //current_icon = (current_icon + 1) % NUM_MENU_ICONS;
 // After changing the icon, mark the layer to have it updated
 layer_mark_dirty(menu_layer_get_layer(menu_layer));
 break;
+}
+	*/
+	default:
+	display_stopwatch();
+	break;
 }
 }
 void window_load(Window *window) {
