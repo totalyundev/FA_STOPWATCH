@@ -37,7 +37,8 @@ return 0;
 
 static int16_t menu_get_header_height_callback(MenuLayer *menu_layer, uint16_t section_index, void *data) {
 // This is a define provided in pebble.h that you may use for the default height
-return MENU_CELL_BASIC_HEADER_HEIGHT;
+//return MENU_CELL_BASIC_HEADER_HEIGHT;
+return 0;
 }
 
 static void menu_draw_header_callback(GContext* ctx, const Layer *cell_layer, uint16_t section_index, void *data) {
@@ -45,7 +46,7 @@ static void menu_draw_header_callback(GContext* ctx, const Layer *cell_layer, ui
 switch (section_index) {
 case 0:
 // Draw title text in the section header
-menu_cell_basic_header_draw(ctx, cell_layer, "First");
+menu_cell_basic_header_draw(ctx, cell_layer, NULL);
 break;
 case 1:
 menu_cell_basic_header_draw(ctx, cell_layer, "Second");
