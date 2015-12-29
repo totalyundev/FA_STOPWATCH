@@ -20,7 +20,9 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 	if (s_uptime==3){
 		//window_stack_pop_all(true);
 		//disp main menu
-		show_first_menu();
+		//show_first_menu();
+		window_stack_pop_all( true);
+		// tick_timer_service_unsubscribe();
 	}
 	
 }

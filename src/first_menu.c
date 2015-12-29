@@ -65,10 +65,10 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
             menu_cell_basic_draw(ctx, cell_layer, "Simple Event", NULL, NULL);
             break;
             case 2:
-            menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
+            menu_cell_basic_draw(ctx, cell_layer, "Pointless Button", NULL, NULL);
             break;
             case 3:
-            menu_cell_basic_draw(ctx, cell_layer, "Event #4", NULL, NULL);
+            menu_cell_basic_draw(ctx, cell_layer, "Quit", NULL, NULL);
             break;
         }
         break;
