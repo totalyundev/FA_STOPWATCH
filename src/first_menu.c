@@ -2,6 +2,7 @@
 #include "first_menu.h"
 #include "stopwatch.h"
 #include "skaryfikacja.h"
+#include "dialog_message_window.h"
 #define NUM_MENU_ICONS 4
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 4
@@ -16,6 +17,15 @@ static void display_stopwatch(void) {
     //and this is a temporary function, just calls a stopwatch
     show_stopwatch();
 }
+
+
+static int16_t get_cell_height_callback(struct MenuLayer *menu_layer, MenuIndex *cell_index, void *context) {
+  return PBL_IF_ROUND_ELSE(
+    menu_layer_is_index_selected(menu_layer, cell_index) ?
+      MENU_CELL_ROUND_FOCUSED_SHORT_CELL_HEIGHT : MENU_CELL_ROUND_UNFOCUSED_TALL_CELL_HEIGHT,
+    LIST_MESSAGE_WINDOW_CELL_HEIGHT);
+}
+
 static uint16_t menu_get_num_sections_callback(MenuLayer *menu_layer, void *data) {
     return NUM_MENU_SECTIONS;
 }
@@ -49,10 +59,10 @@ static void menu_draw_row_callback(GContext* ctx, const Layer *cell_layer, MenuI
         // Use the row to specify which item we'll draw
         switch (cell_index->row) {
             case 0:
-            menu_cell_basic_draw(ctx, cell_layer, "Event #1", NULL,NULL);
+            menu_cell_basic_draw(ctx, cell_layer, "Timer", NULL,NULL);
             break;
             case 1:
-            menu_cell_basic_draw(ctx, cell_layer, "Event #2", NULL, NULL);
+            menu_cell_basic_draw(ctx, cell_layer, "Simple Event", NULL, NULL);
             break;
             case 2:
             menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
@@ -68,59 +78,28 @@ void menu_select_callback(MenuLayer *menu_layer, MenuIndex *cell_index, void *da
     // Use the row to specify which item will receive the select action
     //this is a place for callbacks for each element
     switch (cell_index->section) {
-        /*   case 0:
+          case 0:
         // Use the row to specify which item we'll draw
         switch (cell_index->row) {
             case 0:
-            //            menu_cell_basic_draw(ctx, cell_layer, "Event #1", NULL,NULL);
-            break;
+						display_stopwatch();
+						break;
             case 1:
-            //          menu_cell_basic_draw(ctx, cell_layer, "Event #2", NULL, NULL);
+         	  dialog_message_window_push();  
             break;
             case 2:
-            //        menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
+            //   
             break;
             case 3:
-            //      menu_cell_basic_draw(ctx, cell_layer, "Event #4", NULL, NULL);
+            //  
+						window_stack_pop_all(true);
             break;
-        }
-        break;
-        case 1:
-        switch (cell_index->row) {
-            case 0:
-            //    menu_cell_basic_draw(ctx, cell_layer, "Event #1", NULL,NULL);
-            break;
-            case 1:
-            //  menu_cell_basic_draw(ctx, cell_layer, "Event #2", NULL, NULL);
-            break;
-            case 2:
-            //menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
-            break;
-            case 3:
-            //       menu_cell_basic_draw(ctx, cell_layer, "Event #4", NULL, NULL);
-            break;
-        }
-        break;
-        case 2:
-        switch (cell_index->row) {
-            case 0:
-            //     menu_cell_basic_draw(ctx, cell_layer, "Event #1", NULL,NULL);
-            break;
-            case 1:
-            //   menu_cell_basic_draw(ctx, cell_layer, "Event #2", NULL, NULL);
-            break;
-            case 2:
-            // menu_cell_basic_draw(ctx, cell_layer, "Event #3", NULL, NULL);
-            break;
-            case 3:
-            // menu_cell_basic_draw(ctx, cell_layer, "Event #4", NULL, NULL);
-            break;
-        }
-        break;
-    }*/
-    default:
-    display_stopwatch();
-    break;
+
+				 		default:
+				    display_stopwatch();
+    				break;
+				}
+   
 }
 }
 void window_load(Window *window) {
@@ -148,6 +127,7 @@ void window_load(Window *window) {
         .draw_header = menu_draw_header_callback,
         .draw_row = menu_draw_row_callback,
         .select_click = menu_select_callback,
+			.get_cell_height = get_cell_height_callback,
     });
     // Bind the menu layer's click config provider to the window for interactivity
     menu_layer_set_click_config_onto_window(menu_layer, window);
