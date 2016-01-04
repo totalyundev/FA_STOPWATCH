@@ -9,6 +9,24 @@
     "resources": {
         "media": [
             {
+                "file": "images/cross.png",
+                "name": "CROSS",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/save33X31.png",
+                "name": "SAVE",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/action_icon_YES (copy).png",
+                "name": "TICK_ICON",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
                 "file": "images/music_icon_pause.png",
                 "name": "PAUSE_ICON",
                 "targetPlatforms": null,
